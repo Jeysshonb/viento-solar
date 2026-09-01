@@ -259,6 +259,21 @@
   </figure>
 </div>
 
+<div class="panel" style="border-left: 3px solid var(--icme)">
+  <p class="panel-title" style="color: var(--icme)">Qué demuestra y qué no demuestra este dato</p>
+  <p style="margin:0">
+    La inversión sale de <strong>contar los eventos de los catálogos publicados</strong>
+    dentro de cada periodo. No la descubre el agrupamiento: cualquiera con esos dos
+    catálogos llega al mismo número sin procesar un solo dato de la sonda.
+  </p>
+  <p style="margin:12px 0 0">
+    Lo que sí demuestra es que <strong>el procesamiento funciona</strong>: se cruzaron
+    263.161 puntos de dos instrumentos, se generaron 214.658 ventanas y el etiquetado
+    reproduce correctamente la modulación del ciclo solar. Es una verificación del
+    sistema, no un hallazgo del modelo. La distinción importa.
+  </p>
+</div>
+
 <section class="col">
   <h2>Por qué tiene sentido físico</h2>
   <p>
@@ -469,6 +484,67 @@
 </section>
 
 <section class="col">
+  <h2>Validación de los resultados</h2>
+  <p>
+    Todas las cifras de esta página se recalcularon desde el conjunto procesado, sin
+    reutilizar valores intermedios. La tabla siguiente recoge las comprobaciones de
+    coherencia y su resultado, incluida una que falló.
+  </p>
+</section>
+
+<div class="panel">
+  <p class="panel-title">Comprobaciones de coherencia</p>
+  <div class="scroll">
+    <table>
+      <thead><tr><th>Comprobación</th><th>Valor obtenido</th><th>Resultado</th></tr></thead>
+      <tbody>
+        <tr>
+          <td style="text-align:left">Razón 2008 y 2015</td>
+          <td class="num">36,14 : 1 · 1 : 1,94</td>
+          <td style="color:var(--sir)">correcto</td>
+        </tr>
+        <tr>
+          <td style="text-align:left">Submuestreo (Fondo = SIR)</td>
+          <td class="num">31.293 = 31.293</td>
+          <td style="color:var(--sir)">correcto</td>
+        </tr>
+        <tr>
+          <td style="text-align:left">Exactitud y equilibrada</td>
+          <td class="num">0,4857 · 0,3730</td>
+          <td style="color:var(--sir)">correcto</td>
+        </tr>
+        <tr style="color:var(--icme)">
+          <td style="text-align:left"><strong>Ventanas generadas</strong></td>
+          <td class="num"><strong>263.123, no 260.888</strong></td>
+          <td><strong>falló · corregido</strong></td>
+        </tr>
+        <tr>
+          <td style="text-align:left">Duraciones distintas de ventana</td>
+          <td class="num">1 (01:16:00)</td>
+          <td style="color:var(--sir)">correcto</td>
+        </tr>
+        <tr>
+          <td style="text-align:left">Ventanas dentro del hueco 2009–2014</td>
+          <td class="num">0</td>
+          <td style="color:var(--sir)">correcto</td>
+        </tr>
+        <tr>
+          <td style="text-align:left">Columnas de densidad o alpha ratio</td>
+          <td class="num">0 de 21</td>
+          <td style="color:var(--sir)">correcto</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <figcaption style="margin-top:16px">
+    La cuarta fila era un error de redacción: la cifra publicada no se había derivado de
+    las tres que la componen. Se deja documentada en lugar de sustituirla en silencio.
+    Las dos últimas filas son la evidencia directa de que las correcciones 1 y 4
+    descritas más abajo están efectivamente aplicadas.
+  </figcaption>
+</div>
+
+<section class="col">
   <h2>Cuatro correcciones sobre el análisis anterior</h2>
   <p>
     Al reescribir el análisis en módulos con pruebas aparecieron cuatro errores que
@@ -529,7 +605,7 @@
       <thead><tr><th>Paso</th><th>Ventanas</th><th>Nota</th></tr></thead>
       <tbody>
         <tr><td>Puntos a 4 min</td><td class="num">263.161</td><td style="text-align:left;color:var(--ink-3)">IMF × SWE, tiempo exacto</td></tr>
-        <tr><td>Ventanas generadas</td><td class="num">260.888</td><td style="text-align:left;color:var(--ink-3)">20 puntos, paso 1</td></tr>
+        <tr><td>Ventanas generadas</td><td class="num">263.123</td><td style="text-align:left;color:var(--ink-3)">20 puntos, paso 1</td></tr>
         <tr><td>− huecos largos</td><td class="num">−46.230</td><td style="text-align:left;color:var(--ink-3)">≥ 2 ausentes seguidos</td></tr>
         <tr><td>− zona de transición</td><td class="num">−2.235</td><td style="text-align:left;color:var(--ink-3)">solapan &lt; 80 %</td></tr>
         <tr><td><strong>Finales</strong></td><td class="num"><strong>214.658</strong></td><td style="text-align:left;color:var(--ink-3)">etiquetadas</td></tr>
