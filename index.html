@@ -551,6 +551,120 @@
 </section>
 
 <section class="col">
+  <h2>Qué variables deben entrar</h2>
+  <p>
+    Las cifras anteriores se obtuvieron con siete variables, dejando fuera densidad y
+    razón alfa/protón por su alta fracción de ausentes (<span class="num">35&nbsp;%</span>
+    y <span class="num">40&nbsp;%</span>). Esa decisión se puso a prueba, y
+    <strong>resultó equivocada</strong>.
+  </p>
+</section>
+
+<div class="panel">
+  <p class="panel-title">Siete variables frente a nueve</p>
+  <div class="scroll">
+    <table>
+      <thead>
+        <tr>
+          <th>Configuración</th><th>Ventanas perdidas</th><th>Agrupadas</th>
+          <th>AUC ICME</th><th>Lift ICME</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="text-align:left">7 variables · 80 min</td>
+          <td class="num">17,6 %</td><td class="num">72.104</td>
+          <td class="num">0,650</td><td class="num">1,60</td>
+        </tr>
+        <tr style="color:var(--icme)">
+          <td style="text-align:left"><strong>9 variables · 80 min</strong></td>
+          <td class="num"><strong>47,6 %</strong></td><td class="num"><strong>53.137</strong></td>
+          <td class="num"><strong>0,746</strong></td><td class="num"><strong>4,82</strong></td>
+        </tr>
+        <tr>
+          <td style="text-align:left">7 variables · 6 h</td>
+          <td class="num">25,1 %</td><td class="num">15.600</td>
+          <td class="num">0,679</td><td class="num">2,06</td>
+        </tr>
+        <tr>
+          <td style="text-align:left">9 variables · 6 h</td>
+          <td class="num">61,0 %</td><td class="num">10.243</td>
+          <td class="num">0,740</td><td class="num">5,62</td>
+        </tr>
+        <tr>
+          <td style="text-align:left">7 variables · 24 h</td>
+          <td class="num">42,5 %</td><td class="num">2.254</td>
+          <td class="num">0,722</td><td class="num">6,32</td>
+        </tr>
+        <tr>
+          <td style="text-align:left">9 variables · 24 h</td>
+          <td class="num">77,1 %</td><td class="num">1.244</td>
+          <td class="num">0,798</td><td class="num">4,52</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <figcaption style="margin-top:16px">
+    El AUC de ICME mejora con las nueve variables en los tres tamaños de ventana, sin
+    excepción. Y <strong>nueve variables a 80 minutos (0,746) supera a siete variables a
+    24 horas (0,722)</strong> con veinticuatro veces más muestras: aporta más añadir
+    variables que alargar la ventana.
+  </figcaption>
+</div>
+
+<div class="panel">
+  <p class="panel-title">Control · ¿la mejora viene de las variables o del filtrado?</p>
+  <p>
+    Exigir que las nueve variables estén completas descarta muchas más ventanas. Las que
+    sobreviven no son una muestra aleatoria: corresponden a los periodos con mejor
+    cobertura instrumental, donde el problema podría ser simplemente más fácil. Para
+    separar ambos efectos se repitió el análisis con <strong>siete variables pero
+    restringido exactamente a las ventanas que sobreviven con nueve</strong>.
+  </p>
+  <div class="scroll">
+    <table>
+      <thead>
+        <tr><th>Configuración</th><th>Agrupadas</th><th>AUC ICME</th><th>Lift ICME</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="text-align:left">7 variables · filtro propio</td>
+          <td class="num">72.104</td><td class="num">0,6504</td><td class="num">1,595</td>
+        </tr>
+        <tr>
+          <td style="text-align:left">7 variables · <strong>control</strong></td>
+          <td class="num">53.137</td><td class="num">0,6551</td><td class="num">1,596</td>
+        </tr>
+        <tr style="color:var(--icme)">
+          <td style="text-align:left"><strong>9 variables</strong></td>
+          <td class="num"><strong>53.137</strong></td>
+          <td class="num"><strong>0,7464</strong></td>
+          <td class="num"><strong>4,816</strong></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <figcaption style="margin-top:16px">
+    El control se queda en <span class="num">0,6551</span>, prácticamente igual que las
+    siete variables sin restringir (<span class="num">0,6504</span>). El salto a
+    <span class="num">0,7464</span> aparece <em>solo</em> al incorporar densidad y alfa.
+    <strong>El filtrado explica el 5&nbsp;% de la mejora; las variables, el 95&nbsp;%
+    restante</strong> (a 6 horas, 17&nbsp;% y 83&nbsp;%). El lift lo confirma de forma
+    aún más nítida: 1,595 · 1,596 · 4,816 — el control no se mueve ni una milésima.
+  </figcaption>
+</div>
+
+<section class="col">
+  <p>
+    La conclusión es que densidad y razón alfa/protón <strong>aportan información
+    discriminante real</strong>, y no actúan como un filtro de calidad encubierto.
+    Tiene sentido físico: ambas son trazadores habituales para identificar eyecciones en
+    la literatura. El análisis pasa a usar las nueve variables pese a perder más
+    ventanas.
+  </p>
+</section>
+
+<section class="col">
   <h2>Validación de los resultados</h2>
   <p>
     Todas las cifras de esta página se recalcularon desde el conjunto procesado, sin
